@@ -8,7 +8,8 @@ import News from "./components/news/News";
 import Music from "./components/music/Music";
 import Settings from "./components/settings/Settings";
 
-function App() {
+function App(props) {
+  console.log(props);
   return (
     <BrowserRouter>
       <div className={styles.app_wrapper}>
@@ -17,8 +18,14 @@ function App() {
 
         <div className={styles.app_wrapper_content}>
           <Routes>
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/dialogs" element={<Dialogs />} />
+            <Route
+              path="/profile"
+              element={<Profile state={props.state.profilePage} />}
+            />
+            <Route
+              path="/dialogs"
+              element={<Dialogs state={props.state.dialogsPage} />}
+            />
             <Route path="/news" element={<News />} />
             <Route path="/music" element={<Music />} />
             <Route path="/settings" element={<Settings />} />
